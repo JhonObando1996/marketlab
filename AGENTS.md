@@ -20,6 +20,8 @@ Do not add dependencies or replace the stack unless asked.
 
 ## Skills and Docs
 
+Project agent skills live in `.agents/skills/` and are tracked in `skills-lock.json`. Install or update skills with `npx skills add` and `npx skills update`.
+
 Use relevant installed skills for framework-specific work.
 
 For Next.js-specific uncertainty, prefer the installed docs in `node_modules/next/dist/docs/`.
