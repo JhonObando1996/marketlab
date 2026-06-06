@@ -92,6 +92,11 @@ tasks:
         {{.BUN}} -e "const { mkdirSync } = require('node:fs'); mkdirSync('src/lib/supabase', { recursive: true })"
       - '{{.SUPABASE}} gen types typescript --project-id "{{.SUPABASE_PROJECT_REF}}" > src/lib/supabase/database.types.ts'
 
+  db:seed:users:
+    desc: Create idempotent workshop demo auth users.
+    cmds:
+      - "{{.BUN}} --env-file=.env.local scripts/seed-demo-users.ts"
+
   verify:
     desc: Run checks, typecheck, and unit tests.
     cmds:

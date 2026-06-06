@@ -1,9 +1,13 @@
 import Link from "next/link";
 
+import { HeaderAuthControls } from "@/components/marketlab/header-auth-controls";
 import { ThemeToggle } from "@/components/marketlab/theme-toggle";
+import { getAuthContext } from "@/lib/auth/get-auth-context";
 import { cn } from "@/lib/utils";
 
-export function Header() {
+export async function Header() {
+  const { user, profile, profileMissing } = await getAuthContext();
+
   return (
     <header className="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4 sm:px-6">
@@ -25,8 +29,11 @@ export function Header() {
         </div>
 
         <div className="flex items-center gap-3">
-          {/* Auth controls will live here in a later workshop step. */}
-          <div className="hidden sm:block" aria-hidden="true" />
+          <HeaderAuthControls
+            user={user}
+            profile={profile}
+            profileMissing={profileMissing}
+          />
           <ThemeToggle />
         </div>
       </div>
